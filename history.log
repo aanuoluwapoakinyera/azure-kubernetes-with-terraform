@@ -1,0 +1,366 @@
+    1  ll
+    2  mkdir aanu-aks
+    3  git clone https://github.com/Azure/terraform.git
+    4  du 
+    5  ll
+    6  cd terraform 
+    7  du -h
+    8  du -m
+    9  cd ..
+   10  du -h
+   11  du -sh --max-depth=1
+   12  du -sh --max-depth=1 ~/
+   13  du -sh --max-depth=1 /home/azureuser/
+   14  du -h --max-depth=1 /home/ubuntu
+   15  du -h --max-depth=1 /home/azureuser/
+   16  cd terraform/quickstart/201-k8s-cluster-with-
+   17  cd terraform/quickstart/201-k8s-cluster-with-tf-and-aks/
+   18  terraform init -upgrade
+   19  cd ~
+   20  sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
+   21  wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
+   22  gpg --no-default-keyring --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg --fingerprint
+   23  echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
+   24  https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+   25  sudo apt update
+   26  sudo apt-get install terraform
+   27  terraform -v
+   28  cd -
+   29  terraform init
+   30  terraform init -upgrade
+   31  terraform plan -out main.tfplan
+   32  cd ~
+   33  echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
+   34  sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+   35  kubectl version --client
+   36  kubectl version --client --output=yaml
+   37  cd -
+   38  az account show
+   39  cd ~
+   40  curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+   41  az login
+   42  cd -
+   43  terraform plan -out main.tfplan
+   44  terraform apply main.tfplan
+   45  terraform destroy
+   46  terraform plan
+   47  terraform apply
+   48  terraform destroy
+   49  terraform apply
+   50  terraform destroy
+   51  terraform apply
+   52  kubectl get nodes
+   53  resource_group_name=$(terraform output -raw resource_group_name)
+   54  az aks list --resource-group $resource_group_name --query "[].{\"K8s cluster name\":name}" --output table
+   55  cd -
+   56  cd terraform/quickstart/201-k8s-cluster-with-tf-and-aks/
+   57  az aks list --resource-group $resource_group_name --query "[].{\"K8s cluster name\":name}" --output table
+   58  resource_group_name=$(terraform output -raw resource_group_name)
+   59  az aks list --resource-group $resource_group_name --query "[].{\"K8s cluster name\":name}" --output table
+   60  echo "$(terraform output kube_config)" > ./azurek8s
+   61  cat ./azurek8s
+   62  export KUBECONFIG=./azurek8s
+   63  kubectl get nodes
+   64  touch aks-store-quickstart.yaml
+   65  kubectl apply -f aks-store-quickstart.yaml
+   66  kubectl get pods
+   67  kubectl get service store-front --watch
+   68  kubectl apply -f azure-vote.yaml 
+   69  kubectl get pods
+   70  kubectl get svc
+   71  kubectl delete -f azure-vote.yaml 
+   72  kubectl delete -f aks-store-quickstart.yaml 
+   73  kubectl create ns pets
+   74  kubectl apply -f https://raw.githubusercontent.com/Azure-Samples/aks-store-demo/main/aks-store-all-in-one.yaml -n pets
+   75  kubectl get svc -ns pets
+   76  kubectl get svc -n pets
+   77  kubectl delete -f https://raw.githubusercontent.com/Azure-Samples/aks-store-demo/main/aks-store-all-in-one.yaml -n pets
+   78  terraform state list
+   79  terraform destroy
+   80  sp=$(terraform output -raw sp)
+   81  echo $sp
+   82  cd -
+   83  history
+   84  cd terraform/quickstart/201-k8s-cluster-with-tf-and-aks/
+   85  cd ~
+   86  cd terraform/quickstart/201-k8s-cluster-with-tf-and-aks/
+   87  terraform init
+   88  terraform apply 
+   89  kubectl get nodes
+   90  resource_group_name=$(terraform output -raw resource_group_name)
+   91  az aks list --resource-group $resource_group_name --query "[].{\"K8s cluster name\":name}" --output table
+   92  echo "$(terraform output kube_config)" > ./azurek8s
+   93  cat ./azurek8s
+   94  export KUBECONFIG=./azurek8s
+   95  kubectl get nodes
+   96  curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+   97  chmod 700 get_helm.sh
+   98  ./get_helm.sh
+   99  helm -v
+  100  helm -version
+  101  helm list
+  102  helm repo list
+  103  ll
+  104  chmod 600 azurek8s 
+  105  helm repo list
+  106  helm list
+  107  helm repo add hashicorp https://helm.releases.hashicorp.com
+  108  helm repo list
+  109  helm repo update
+  110  helm search repo vault --versions
+  111  kubectl get pods
+  112  helm install vault hashicorp/vault --set='ui.enabled=true' --set='ui.serviceType=Loadbalancer'
+  113  helm install vault hashicorp/vault --set='ui.enabled=true' --set='ui.serviceType=LoadBalancer'
+  114  helm list
+  115  helm remove vault
+  116  helm uninstall vault
+  117  helm install vault hashicorp/vault --set='ui.enabled=true' --set='ui.serviceType=LoadBalancer'
+  118  helm status vault
+  119  helm get manifest vault
+  120  kubectl get pods
+  121  helm list
+  122  kubectl get svc
+  123  kubectl get all
+  124  kubectl logs pod/vault-0
+  125  kubectl get all
+  126  kubectl exec -it pod/vault-0 sh
+  127  helm list
+  128  helm uninstall vault
+  129  history
+
+
+
+ 1  ll
+    2  mkdir aanu-aks
+    3  git clone https://github.com/Azure/terraform.git
+    4  du 
+    5  ll
+    6  cd terraform 
+    7  du -h
+    8  du -m
+    9  cd ..
+   10  du -h
+   11  du -sh --max-depth=1
+   12  du -sh --max-depth=1 ~/
+   13  du -sh --max-depth=1 /home/azureuser/
+   14  du -h --max-depth=1 /home/ubuntu
+   15  du -h --max-depth=1 /home/azureuser/
+   16  cd terraform/quickstart/201-k8s-cluster-with-
+   17  cd terraform/quickstart/201-k8s-cluster-with-tf-and-aks/
+   18  terraform init -upgrade
+   19  cd ~
+   20  sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
+   21  wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
+   22  gpg --no-default-keyring --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg --fingerprint
+   23  echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
+   24  https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+   25  sudo apt update
+   26  sudo apt-get install terraform
+   27  terraform -v
+   28  cd -
+   29  terraform init
+   30  terraform init -upgrade
+   31  terraform plan -out main.tfplan
+   32  cd ~
+   33  echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
+   34  sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+   35  kubectl version --client
+   36  kubectl version --client --output=yaml
+   37  cd -
+   38  az account show
+   39  cd ~
+   40  curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+   41  az login
+   42  cd -
+   43  terraform plan -out main.tfplan
+   44  terraform apply main.tfplan
+   45  terraform destroy
+   46  terraform plan
+   47  terraform apply
+   48  terraform destroy
+   49  terraform apply
+   50  terraform destroy
+   51  terraform apply
+   52  kubectl get nodes
+   53  resource_group_name=$(terraform output -raw resource_group_name)
+   54  az aks list --resource-group $resource_group_name --query "[].{\"K8s cluster name\":name}" --output table
+   55  cd -
+   56  cd terraform/quickstart/201-k8s-cluster-with-tf-and-aks/
+   57  az aks list --resource-group $resource_group_name --query "[].{\"K8s cluster name\":name}" --output table
+   58  resource_group_name=$(terraform output -raw resource_group_name)
+   59  az aks list --resource-group $resource_group_name --query "[].{\"K8s cluster name\":name}" --output table
+   60  echo "$(terraform output kube_config)" > ./azurek8s
+   61  cat ./azurek8s
+   62  export KUBECONFIG=./azurek8s
+   63  kubectl get nodes
+   64  touch aks-store-quickstart.yaml
+   65  kubectl apply -f aks-store-quickstart.yaml
+   66  kubectl get pods
+   67  kubectl get service store-front --watch
+   68  kubectl apply -f azure-vote.yaml 
+   69  kubectl get pods
+   70  kubectl get svc
+   71  kubectl delete -f azure-vote.yaml 
+   72  kubectl delete -f aks-store-quickstart.yaml 
+   73  kubectl create ns pets
+   74  kubectl apply -f https://raw.githubusercontent.com/Azure-Samples/aks-store-demo/main/aks-store-all-in-one.yaml -n pets
+   75  kubectl get svc -ns pets
+   76  kubectl get svc -n pets
+   77  kubectl delete -f https://raw.githubusercontent.com/Azure-Samples/aks-store-demo/main/aks-store-all-in-one.yaml -n pets
+   78  terraform state list
+   79  terraform destroy
+   80  sp=$(terraform output -raw sp)
+   81  echo $sp
+   82  cd -
+   83  history
+   84  cd terraform/quickstart/201-k8s-cluster-with-tf-and-aks/
+   85  cd ~
+   86  cd terraform/quickstart/201-k8s-cluster-with-tf-and-aks/
+   87  terraform init
+   88  terraform apply 
+   89  kubectl get nodes
+   90  resource_group_name=$(terraform output -raw resource_group_name)
+   91  az aks list --resource-group $resource_group_name --query "[].{\"K8s cluster name\":name}" --output table
+   92  echo "$(terraform output kube_config)" > ./azurek8s
+   93  cat ./azurek8s
+   94  export KUBECONFIG=./azurek8s
+   95  kubectl get nodes
+   96  curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+   97  chmod 700 get_helm.sh
+   98  ./get_helm.sh
+   99  helm -v
+  100  helm -version
+  101  helm list
+  102  helm repo list
+  103  ll
+  104  chmod 600 azurek8s 
+  105  helm repo list
+  106  helm list
+  107  helm repo add hashicorp https://helm.releases.hashicorp.com
+  108  helm repo list
+  109  helm repo update
+  110  helm search repo vault --versions
+  111  kubectl get pods
+  112  helm install vault hashicorp/vault --set='ui.enabled=true' --set='ui.serviceType=Loadbalancer'
+  113  helm install vault hashicorp/vault --set='ui.enabled=true' --set='ui.serviceType=LoadBalancer'
+  114  helm list
+  115  helm remove vault
+  116  helm uninstall vault
+  117  helm install vault hashicorp/vault --set='ui.enabled=true' --set='ui.serviceType=LoadBalancer'
+  118  helm status vault
+  119  helm get manifest vault
+  120  kubectl get pods
+  121  helm list
+  122  kubectl get svc
+  123  kubectl get all
+  124  kubectl logs pod/vault-0
+  125  kubectl get all
+  126  kubectl exec -it pod/vault-0 sh
+  127  helm list
+  128  helm uninstall vault
+  129  history
+  130  helm install vault hashicorp/vault --set='ui.enabled=true' --set='ui.serviceType=LoadBalancer'
+  131  kubectl get pods
+  132  kubectl exec -it vault-0 sh
+  133  kubectl get pods
+  134  kubectl get all
+  135  kubectl get pods
+  136  kubectl exec -it vault-0 sh
+  137  helm uninstall vault
+  138  kubectl get pvc
+  139  kubectl get pv
+  140  kubectl delete pvc data-vault-0
+  141  kubectl delete pv pvc-e6ada93e-912b-422c-9b99-929a14867fba
+  142  kubectl get pv 
+  143  kubectl get pvc
+  144  helm install vault hashicorp/vault --set='ui.enabled=true' --set='ui.serviceType=LoadBalancer'
+  145  kubectl get pods --watch
+  146  kubectl logs vault-0
+  147  kubectl get pods --watch
+  148  kubectl get all
+  149  kubectl get pods
+  150  kubectl exec -it vault-0 sh
+  151  helm uninstall vault
+  152  helm repo list
+  153  helm repo remove hashicorp
+  154  kubectl get all
+  155  kubectl get pvc
+  156  kubectl delete pvc data-vault-0
+  157  kubectl get pv
+  158  terraform destroy
+  159  cd terraform/quickstart/201-k8s-cluster-with-tf-and-aks/
+  160  terraform init 
+  161  terraform plan
+  162  terraform apply
+  163  kubectl get all
+  164  resource_group_name=$(terraform output -raw resource_group_name)
+  165  az aks list --resource-group $resource_group_name --query "[].{\"K8s cluster name\":name}" --output table
+  166  kubectl get all
+  167  echo "$(terraform output kube_config)" > ./azurek8s
+  168  export KUBECONFIG=./azurek8s
+  169  kubectl get all
+  170  kubectl get nodes
+  171  helm
+  172  helm repo add hashicorp https://helm.releases.hashicorp.com
+  173  helm repo update
+  174  helm search repo vault --versions
+  175  helm install vault hashicorp/vault --set='ui.enabled=true' --set='ui.serviceType=Loadbalancer'
+  176  helm install vault hashicorp/vault --set='ui.enabled=true' --set='ui.serviceType=LoadBalancer'
+  177  helm uninstall vault
+  178  helm install vault hashicorp/vault --set='ui.enabled=true' --set='ui.serviceType=LoadBalancer'
+  179  helm status vault
+  180  kubectl get svc
+  181  kubectl get pofs
+  182  kubectl get pods
+  183  kubectl exec -it vault-0 sh
+  184  helm uninstall vault
+  185  kubectl get pofs
+  186  kubectl get pods
+  187  terraform destroy
+  188  cd terraform/quickstart/201-k8s-cluster-with-tf-and-aks/
+  189  terraform init
+  190  terraform apply
+  191  helm repo add hashicorp https://helm.releases.hashicorp.com
+  192  helm repo update
+  193  helm install vault hashicorp/vault --set='ui.enabled=true' --set='ui.serviceType=LoadBalancer'
+  194  helm repo list
+  195  helm list
+  196  #az aks list --resource-group $resource_group_name --query "[].{\"K8s cluster name\":name}" --output table
+  197  resource_group_name=$(terraform output -raw resource_group_name)
+  198  az aks list --resource-group $resource_group_name --query "[].{\"K8s cluster name\":name}" --output table
+  199  echo "$(terraform output kube_config)" > ./azurek8s
+  200  export KUBECONFIG=./azurek8s
+  201  kubectl get nodes
+  202  helm install vault hashicorp/vault --set='ui.enabled=true' --set='ui.serviceType=LoadBalancer'
+  203  kubectl get pods
+  204  kubectl get svc
+  205  kubectl get pods
+  206  curl -H "Authorization: token mmm_ggg" https://api.github.com/orgs/slimprepdevops
+  207  helm uninstall vault
+  208  kubectl get pods -w
+  209  kubectl get svc -w
+  210  kubectl get svc
+  211  terraform destroy
+  212  cd terraform/quickstart/201-k8s-cluster-with-tf-and-aks/
+  213  terraform apply
+  214  resource_group_name=$(terraform output -raw resource_group_name)
+  215  az aks list --resource-group $resource_group_name --query "[].{\"K8s cluster name\":name}" --output table
+  216  resource_group_name=$(terraform output -raw resource_group_name)
+  217  echo "$(terraform output kube_config)" > ./azurek8s
+  218  export KUBECONFIG=./azurek8s
+  219  kubectl get nodes
+  220  helm repo add hashicorp https://helm.releases.hashicorp.com
+  221  helm install vault hashicorp/vault --set='ui.enabled=true' --set='ui.serviceType=LoadBalancer'
+  222  kubectl get svc
+  223  kubectl get pods -o wide
+  224  kubectl get nodes -o wide
+  225  terraform apply 
+  226  kubectl get nodes
+  227  kubectl get pods
+  228  cd terraform/quickstart/201-k8s-cluster-with-tf-and-aks/
+  229  kubectl get pods
+  230  export KUBECONFIG=./azurek8s
+  231  kubectl get pods
+  232  kubectl exec -it vault-0 sh
+  233  terraform destroy
+  234  history
